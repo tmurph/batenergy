@@ -35,6 +35,6 @@ case ${state} in
 	avg_rate=$((${energy_diff} * 3600 / ${time_diff})) # mW
 	energy_diff_pct=$(bc <<< "scale=1;${energy_diff} * 100 / (${energy_full} / 1000)") # %
 	avg_rate_pct=$(bc <<< "scale=2;${avg_rate} * 100 / (${energy_full} / 1000)") # %/h
-	echo "Battery energy change of ${energy_diff_pct} % (${energy_diff} mWh) at an average rate of ${avg_rate_pct} %/h (${avg_rate} mW)."
+	echo "Battery energy change of ${energy_diff_pct}% (${energy_diff} mWh) at an average rate of ${avg_rate_pct}%/h (${avg_rate} mW)."
 	;;
 esac
