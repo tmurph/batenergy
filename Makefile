@@ -14,6 +14,9 @@ install: $(PKGFULLNAME)
 clean:
 	rm -f PKGBUILD $(PKGFULLNAME)
 
+release: batenergy.sh
+	$(error Bad release number, please increment and recompile)
+
 data.yml: SHA256SUM != sha256sum batenergy.sh | cut -d' ' -f1
 data.yml: version release batenergy.sh
 	echo '---' >$@
