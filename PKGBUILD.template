@@ -1,0 +1,22 @@
+# I'm still trying to figure out why suspend-then-hibernate doesn't work
+# on my system.  This script hooks into sleep activity (though the
+# mechanism is apparently a hack that may go away at some point).
+#
+# See:
+#   https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate#Hooks_in_/usr/lib/systemd/system-sleep
+#
+# Read the results with:
+#   journalctl -b -u systemd-(suspend|hibernate|hybrid-sleep).service
+pkgname={{pkgname}}
+pkgver={{pkgver}}
+pkgrel={{pkgrel}}
+pkgdesc="Scripts for debugging system-sleep"
+arch=({{arch}})
+license=('Unlicense')
+source=('batenergy.sh')
+sha256sums=('{{sha256sum}}')
+
+
+package() {
+  install -Dm755 -t "${pkgdir}/usr/lib/systemd/system-sleep/" batenergy.sh
+}
